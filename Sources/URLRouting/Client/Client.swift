@@ -48,6 +48,7 @@ public struct URLRoutingClient<Route> {
     as type: Value.Type = Value.self,
     decoder: JSONDecoder? = nil
   ) async throws -> (value: Value, response: URLResponse) {
+    print(#line, #file, String(data: data, encoding: .utf8))
     let (data, response) = try await self.data(for: route)
     do {
       return (try (decoder ?? self.decoder).decode(type, from: data), response)
